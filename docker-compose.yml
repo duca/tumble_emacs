@@ -1,0 +1,22 @@
+version: "3.4"
+services:
+  emacs:
+    image: "eduardoml/tumbleweed_emacs"
+    build:
+      context: tumble
+      network: host
+    volumes:
+      - ./data:/source
+    networks:
+        customNet: {}
+
+networks:
+    customNet:
+        external: true
+
+# a unica referencia que funcionou decentemente
+# https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-docker-registry-on-ubuntu-14-04
+# Lista de configuracoes possiveis
+# https://docs.docker.com/registry/configuration/#list-of-configuration-options
+# Tutorial pra montar um repositorio local
+# https://docs.docker.com/registry/deploying/#run-a-local-registryl
