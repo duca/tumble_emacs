@@ -17,4 +17,4 @@ xauth nlist ${DISPLAY} | sed -e 's/^..../ffff/' | xauth -f ${XAUTH} nmerge - &&\
            -v $PWD/data:/source \
 	   -v ${HOME}/apps:/apps \
 	   --privileged --cap-add=ALL \
-	   opensuse:emacs
+	   eduardoml/emacs_cpp_netcore

@@ -1,9 +1,9 @@
 version: "3.4"
 services:
   emacs:
-    image: "eduardoml/tumbleweed_emacs"
+    image: "eduardoml/emacs_cpp_netcore"
     build:
-      context: tumble
+      context: .
       network: host
     volumes:
       - ./data:/source
