@@ -44,11 +44,15 @@ zlib-devel
 libqt5-creator
 
 git
-cpp
-gcc
-clang
+cpp9
+gcc9
+clang9
+libclang9
+libLLVM9
+
 java-11-openj9-devel
 
-libicu67
+libicu-devel
+libicu-suse65_1
 
 hack-fonts

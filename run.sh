@@ -8,13 +8,13 @@ xauth nlist ${DISPLAY} | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
 xauth nlist ${DISPLAY} | sed -e 's/^..../ffff/' | xauth -f ${XAUTH} nmerge - &&\
     docker run --rm \
 	   -it \
-	   --network=host \
+	   --net=host \
 	   -m 20G \
 	   -e DISPLAY=${DISPLAY} \
 	   -e LC_ALL=en_US.utf8 \
-	   -v ${XAUTH}:${XAUTH}:Z \
-	   -v ${XSOCK}:${XSOCK}:Z \
            -v $PWD/data:/source \
 	   -v ${HOME}/apps:/apps \
+           -v $HOME/.Xauthority:/home/dev/.Xauthority:rw \
+           -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
 	   --privileged --cap-add=ALL \
 	   eduardoml/emacs_cpp_netcore

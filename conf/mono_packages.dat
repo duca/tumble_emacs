@@ -7,6 +7,4 @@ dotnet-sdk-3.1
 dotnet-targeting-pack-3.1
 aspnetcore-runtime-3.1
 aspnetcore-targeting-pack-3.1
-code
-
-mono-complete
+mono-*

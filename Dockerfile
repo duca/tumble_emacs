@@ -1,4 +1,4 @@
-FROM opensuse/tumbleweed
+FROM opensuse/leap
 
 MAINTAINER Eduardo Lopes <edumlopes@gmail.com>
 
@@ -24,14 +24,21 @@ RUN cat /root/mono_packages.dat | xargs zypper in -y
 RUN mkdir -p /home/dev/work
 RUN useradd dev -u 1000 -d /home/dev
 RUN chown -R dev /home/dev
+
 ########################################################################
 # Installing Emacs
 RUN cd /home/dev/ && git clone --depth=1 https://git.savannah.gnu.org/git/emacs.git
-ADD scripts/compile_emacs.sh /home/dev/emacs/
-RUN /home/dev/emacs/compile_emacs.sh
+ADD scripts/emacs.sh /home/dev/emacs/
+RUN /home/dev/emacs/emacs.sh
 USER root
 RUN cd /home/dev/emacs/build && make install -j8
 RUN rm -rf emacs
+
+########################################################################
+# Building omnisharp
+RUN cd /home/dev/ && git clone --depth 1 https://github.com/OmniSharp/omnisharp-roslyn
+RUN zypper in mono-nuget
+# RUN cd /home/dev/omnisharp-roslyn && ./build.sh
 
 USER dev
 # ENTRYPOINT ["/root/.cabal/bin/pandoc"]
